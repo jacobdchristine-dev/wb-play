@@ -29,4 +29,4 @@ html,body{margin:0;height:100%;background:var(--theme-bg,#111);overflow:hidden;t
 [data-theme=dark] .sndbtn{opacity:.7;background:#d8d8d8;color:#111}
 
 /* landscape only: MENU sits top right, centered above the A/B cluster (portrait unchanged) */
-@media (orientation:landscape){.sbtn{left:auto;right:calc(max(14px,env(safe-area-inset-right)) + 71px);transform:translateX(50%);bottom:calc(130px + env(safe-area-inset-bottom))}}
+@media (orientation:landscape){.sbtn{left:auto;right:calc(max(14px,env(safe-area-inset-right)) + 71px);transform:translateX(50%);bottom:calc(146px + env(safe-area-inset-bottom))}}
