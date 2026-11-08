@@ -28,5 +28,5 @@ html,body{margin:0;height:100%;background:var(--theme-bg,#111);overflow:hidden;t
 .sndbtn.off{text-decoration:line-through}
 [data-theme=dark] .sndbtn{opacity:.7;background:#d8d8d8;color:#111}
 
-/* landscape only: MENU sits centered above the d-pad (portrait unchanged) */
-@media (orientation:landscape){.sbtn{left:calc(max(14px,env(safe-area-inset-left)) + 75px);bottom:calc(180px + env(safe-area-inset-bottom))}}
+/* landscape only: MENU sits top right, centered above the A/B cluster (portrait unchanged) */
+@media (orientation:landscape){.sbtn{left:auto;right:calc(max(14px,env(safe-area-inset-right)) + 71px);transform:translateX(50%);bottom:calc(130px + env(safe-area-inset-bottom))}}
