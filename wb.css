@@ -1,0 +1,29 @@
+html,body{margin:0;height:100%;background:var(--theme-bg,#111);overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#wrap{position:absolute;inset:0;display:flex;justify-content:center;align-items:flex-start;padding-top:4px}
+#screen{image-rendering:pixelated;image-rendering:crisp-edges;width:min(100vw - 6px,(100vh - 8px)*160/144,700px);aspect-ratio:160/144;background:#000;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#pad{position:fixed;left:0;right:0;bottom:0;height:0;pointer-events:none}
+#dpad{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(18px + env(safe-area-inset-bottom));width:150px;height:150px;pointer-events:auto;opacity:.42;touch-action:none}
+#dpad span{position:absolute;background:#222;border-radius:6px}
+#dpad .u,#dpad .d{left:50px;width:50px;height:52px}#dpad .u{top:0}#dpad .d{bottom:0}
+#dpad .l,#dpad .r{top:50px;height:50px;width:52px}#dpad .l{left:0}#dpad .r{right:0}
+#dpad i{position:absolute;left:48px;top:48px;width:54px;height:54px;background:#222}
+#dpad[data-dir=up] .u,#dpad[data-dir=down] .d,#dpad[data-dir=left] .l,#dpad[data-dir=right] .r{background:#555}
+#ab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(30px + env(safe-area-inset-bottom));display:flex;gap:14px;align-items:flex-end;pointer-events:auto}
+.rb{width:64px;height:64px;border-radius:50%;border:0;background:#8a1838;color:#fff;font:700 20px/1 var(--font-mono,monospace);opacity:.42;touch-action:none}
+#btnA{margin-bottom:34px}
+.rb.down,.sbtn.down{opacity:.75}
+.sbtn{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(22px + env(safe-area-inset-bottom));pointer-events:auto;border:0;border-radius:999px;background:#333;color:#fff;font:600 12px/1 var(--font-mono,monospace);letter-spacing:.09em;padding:0 16px;height:44px;min-width:72px;opacity:.42;touch-action:none}
+@media (min-aspect-ratio:1/1){#screen{width:min(100vw - 6px,(100vh - 8px)*160/144,700px)}}
+
+/* dark theme: d-pad/buttons were near-invisible (dark on dark). Light fill + outline. */
+[data-theme=dark] #dpad{opacity:.6}
+[data-theme=dark] #dpad span,[data-theme=dark] #dpad i{background:#d8d8d8}
+[data-theme=dark] #dpad[data-dir=up] .u,[data-theme=dark] #dpad[data-dir=down] .d,[data-theme=dark] #dpad[data-dir=left] .l,[data-theme=dark] #dpad[data-dir=right] .r{background:#fff}
+[data-theme=dark] .rb{opacity:.7;background:#e0507a}
+[data-theme=dark] .sbtn{opacity:.7;background:#d8d8d8;color:#111}
+[data-theme=dark] .rb.down,[data-theme=dark] .sbtn.down{opacity:.95}
+
+/* v0.19 sound toggle (ON / LOW / OFF, saved in options) */
+.sndbtn{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom));pointer-events:auto;border:0;border-radius:999px;background:#333;color:#fff;font:600 11px/1 var(--font-mono,monospace);letter-spacing:.06em;padding:0 12px;height:32px;min-width:64px;opacity:.42;touch-action:manipulation}
+.sndbtn.off{text-decoration:line-through}
+[data-theme=dark] .sndbtn{opacity:.7;background:#d8d8d8;color:#111}

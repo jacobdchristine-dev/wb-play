@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Wildbound</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Wildbound">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#000000">
+<script src="seed.js"></script>
+<script src="pwa.js"></script>
+<script>
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';
+}
+(function bootTheme() {
+  let theme = new URLSearchParams(location.search).get('theme');
+  if (theme !== 'light' && theme !== 'dark') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  applyTheme(theme);
+  window.addEventListener('message', event => {
+    if (event.source === parent && event.data && event.data.type === 'pana:theme') {
+      applyTheme(event.data.theme);
+    }
+  });
+  parent.postMessage({ type: 'pana:theme-request' }, '*');
+})();
+</script>
+<link rel="stylesheet" href="design/theme.css">
+<script src="design/components.js"></script>
+<link rel="stylesheet" href="wb.css?v=1798730001">
+</head>
+<body>
+<div id="wrap"><canvas id="screen" width="160" height="144"></canvas></div>
+<div id="pad">
+  <div id="dpad" aria-label="D-pad"><span class="u"></span><span class="d"></span><span class="l"></span><span class="r"></span><i></i></div>
+  <button id="btnStart" class="sbtn">MENU</button>
+  <div id="ab"><button id="btnB" class="rb">B</button><button id="btnA" class="rb">A</button></div>
+</div>
+<script>window.CP_BASE = '';</script>
+<script src="wb.17ff846159.min.js"></script>
+</body>
+</html>
