@@ -2,7 +2,7 @@ const CACHE='wb-6d687e4f71e6';const ASSETS=["./","design/components.js","design/
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{const r=e.request;const u=new URL(r.url);if(r.method!=='GET'||u.origin!==location.origin)return;
- const nav=r.mode==='navigate'||//(index.html|pwa.js)?$/.test(u.pathname)||u.pathname.endsWith('/pwa.js');
+ const nav=r.mode==='navigate'||u.pathname.endsWith('/pwa.js')||u.pathname.endsWith('/index.html');
  if(nav){e.respondWith(caches.open(CACHE).then(c=>{const key=r.mode==='navigate'?'index.html':r;const net=fetch(r,{cache:'no-store'}).then(res=>{if(res.ok)c.put(key,res.clone());return res;});
   const to=new Promise(ok=>setTimeout(ok,3000)).then(()=>c.match(key,{ignoreSearch:true}));
   return Promise.race([net.catch(()=>c.match(key,{ignoreSearch:true})),to.then(m=>m||net)]).then(m=>m||net);}));return;}
