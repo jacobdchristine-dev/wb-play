@@ -27,3 +27,6 @@ html,body{margin:0;height:100%;background:var(--theme-bg,#111);overflow:hidden;t
 .sndbtn{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom));pointer-events:auto;border:0;border-radius:999px;background:#333;color:#fff;font:600 11px/1 var(--font-mono,monospace);letter-spacing:.06em;padding:0 12px;height:32px;min-width:64px;opacity:.42;touch-action:manipulation}
 .sndbtn.off{text-decoration:line-through}
 [data-theme=dark] .sndbtn{opacity:.7;background:#d8d8d8;color:#111}
+
+/* landscape only: MENU sits centered above the d-pad (portrait unchanged) */
+@media (orientation:landscape){.sbtn{left:calc(max(14px,env(safe-area-inset-left)) + 75px);bottom:calc(180px + env(safe-area-inset-bottom))}}
