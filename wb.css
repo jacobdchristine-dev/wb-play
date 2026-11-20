@@ -30,3 +30,7 @@ html,body{margin:0;height:100%;background:var(--theme-bg,#111);overflow:hidden;t
 
 /* landscape only: MENU sits top right, centered above the A/B cluster (portrait unchanged) */
 @media (orientation:landscape){.sbtn{left:auto;right:calc((100vw - (100vh - 8px) * 1.1111) / 4);transform:translateX(50%);bottom:auto;top:calc((100vh - 128px) / 2 - 22px)}}
+/* portrait: controls centered in the gap between game screen and phone bottom (Jake 2026-11-19) */
+@media (orientation:portrait){:root{--wbmid:calc((100vh - 4px - (100vw - 6px) * .9) / 2)}
+#dpad{bottom:max(8px,calc(var(--wbmid) - 75px))}
+#ab{bottom:max(8px,calc(var(--wbmid) - 49px))}}
